@@ -29,14 +29,14 @@ public interface PersonaRepository extends BaseRepository<Persona, Long> {
 
     //EN SQL NATIVO
     @Query(
-            value = "SELECT * FROM persona WHERE persona.nombre LKE %:filtro% OR persona.apellido LIKE %:filtro%",
+            value = "SELECT * FROM persona WHERE persona.nombre LIKE %:filtro% OR persona.apellido LIKE %:filtro%",
             nativeQuery = true
     )
     List<Persona> searchNativo(@Param("filtro") String filtro);
 
     //sql nativo con paginacion
     @Query(
-            value = "SELECT * FROM persona WHERE persona.nombre LKE %:filtro% OR persona.apellido LIKE %:filtro%",
+            value = "SELECT * FROM persona WHERE persona.nombre LIKE %:filtro% OR persona.apellido LIKE %:filtro%",
             //uso de countQuery siempre porque no es automatica la paginacion, y necesitamos la query para contar.
             countQuery = "SELECT count(*) FROM persona",
             nativeQuery = true
